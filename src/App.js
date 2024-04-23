@@ -1,5 +1,8 @@
 import { createContext, useContext, useState } from "react";
-const MyContext = createContext();
+import Another from "./Another.js";
+import Test from "./Test.js";
+import Reset from "./Reset.js";
+export const MyContext = createContext();
 
 export default function App() {
   const [data, setData] = useState("Hello World");
@@ -20,43 +23,5 @@ export default function App() {
       <Another />
       <Reset />
     </MyContext.Provider>
-  );
-}
-
-function Test() {
-  const { updata } = useContext(MyContext);
-  return (
-    <div>
-      <button
-        onClick={() => updata("The value is coming from button 1 ")}
-        className="button"
-      >
-        Button 1
-      </button>
-    </div>
-  );
-}
-
-function Another() {
-  const { updata } = useContext(MyContext);
-  return (
-    <div>
-      <button
-        onClick={() => updata("The value is coming from button 2")}
-        className="button"
-      >
-        Button 2
-      </button>
-    </div>
-  );
-}
-function Reset() {
-  const { updata } = useContext(MyContext);
-  return (
-    <div>
-      <button onClick={() => updata("Hello World")} className="button">
-        Reset
-      </button>
-    </div>
   );
 }
